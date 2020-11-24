@@ -35,6 +35,7 @@ def graphiql(request):
 
 
 urlpatterns = [
-    django.urls.path("", graphiql),
+    # django.urls.path("", graphiql),
+    path("graph", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     django.urls.path("admin", django.contrib.admin.site.urls),
 ]

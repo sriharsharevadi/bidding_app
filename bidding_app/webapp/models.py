@@ -38,3 +38,7 @@ class Bid(models.Model):
      )
     order = models.ForeignKey(User, related_name='bid_order', on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name='bid_user', on_delete=models.CASCADE)
+    accepted = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('order', 'user')

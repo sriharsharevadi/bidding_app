@@ -17,7 +17,7 @@ class MyGraphqlWsConsumer(channels_graphql_ws.GraphqlWsConsumer):
     async def on_connect(self, payload):
         """New client connection handler."""
         # You can `raise` from here to reject the connection.
-        print("New client connected!")
+        print("New client connected!", payload)
 
 
 application = channels.routing.ProtocolTypeRouter({
