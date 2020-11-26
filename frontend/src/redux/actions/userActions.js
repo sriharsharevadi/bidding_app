@@ -20,7 +20,7 @@ export const fetchUser = (userInfo) => dispatch => {
     })
     .then(res => res.data)
     .then(data => {
-        console.log(data)
+        // console.log(data)
         localStorage.setItem("token", data.tokenAuth.token)
         dispatch(setUser(data.tokenAuth.payload))
     })
@@ -49,7 +49,7 @@ export const autoLogin = (token) => dispatch => {
             localStorage.clear();
         }
         else{
-            console.log(token)
+            // console.log(token)
             client.mutate({
                 mutation: VERIFY_USER,
                 variables: {
@@ -59,7 +59,7 @@ export const autoLogin = (token) => dispatch => {
             .then(res => res.data)
             .then(data => {
                 // localStorage.setItem("token", data.token)
-                console.log(data)
+                // console.log(data)
                 dispatch(setUser(data.verifyToken.payload))
             })
         }

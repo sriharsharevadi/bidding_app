@@ -4,6 +4,10 @@ import graphql_jwt
 from graphene_django import DjangoObjectType
 import channels_graphql_ws
 from graphene_django.debug import DjangoDebug
+from rest_framework import serializers
+from django.db.models import Q
+
+
 
 
 from webapp.models import Order, Bid
@@ -42,6 +46,7 @@ class Query(graphene.ObjectType):
         return get_user_model().objects.all()
 
     def resolve_me(self, info):
+        print(info.context)
         user = info.context.user
         if user.is_anonymous:
             raise Exception('Not logged in!')
@@ -49,9 +54,10 @@ class Query(graphene.ObjectType):
         return user
 
     def resolve_all_orders(root, info):
-        print(info.context.user)
+        # print(info.context.user)
         # We can easily optimize query count in the resolve method
-        return Order.objects.all()
+        print(info.context)
+        return Order.objects.all().exclude(user__username=info.context.user)
 
     def resolve_bids_by_order(root, info, order_id):
         try:
@@ -93,6 +99,21 @@ class OrderMutation(SerializerMutation):
         model_operations = ['create', 'update']
         lookup_field = 'id'
         convert_choices_to_enum = False
+
+    @classmethod
+    def perform_mutate(cls, serializer, info):
+        obj = serializer.save()
+        OnNewOrder.new_order()
+
+        kwargs = {}
+        for f, field in serializer.fields.items():
+            if not field.write_only:
+                if isinstance(field, serializers.SerializerMethodField):
+                    kwargs[f] = field.to_representation(obj)
+                else:
+                    kwargs[f] = field.get_attribute(obj)
+
+        return cls(errors=None, **kwargs)
 
 
 class BidMutation(SerializerMutation):
@@ -160,7 +181,8 @@ class OnNewOrder(channels_graphql_ws.Subscription):
         # return [chatroom] if chatroom is not None else None
 
     def publish(self, info):
-        print(info.context.user)
+        print('im publishing')
+        # print(info.context.user)
         """Called to prepare the subscription notification message."""
 
         # The `self` contains payload delivered from the `broadcast()`.
@@ -188,7 +210,7 @@ class OnNewOrder(channels_graphql_ws.Subscription):
         )
 
     @classmethod
-    def new_order(cls, quantity, type, user):
+    def new_order(cls):
         """Auxiliary function to send subscription notifications.
 
         It is generally a good idea to encapsulate broadcast invocation
@@ -197,7 +219,7 @@ class OnNewOrder(channels_graphql_ws.Subscription):
         implementation details.
         """
         cls.broadcast(
-            payload={"quantity": quantity, "type": type, "user": user},
+            payload={},
         )
 
 

@@ -6,19 +6,17 @@ import {ALL_ORDERS_SUB} from '../../graphql/subscriptions'
 
 const allOrders = (payload) => ({ type: ADD_ORDER, payload})
 
-
-
 // export function addOrder(payload) {
 //   return { type: ADD_ORDER, payload };
 // }
 
 export const fetchOrders = () => dispatch => {
+    // console.log('fetching')
     client.query({
         query: ALL_ORDERS,
-
     })
     .then(res => {
-        // console.log(data.allOrders)
+        console.log(res.data.allOrders)
         dispatch(allOrders(res.data.allOrders))
     })
 }

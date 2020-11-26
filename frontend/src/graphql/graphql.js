@@ -1,9 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { gql } from '@apollo/client';
 import { split, HttpLink, ApolloLink, concat } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
-import {LOGIN_USER} from './mutations'
 
 const httpLink = new HttpLink({
   uri: "http://localhost:8000/graph", // use https for secure endpoint
@@ -40,20 +38,35 @@ const link = split(
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
-  operation.setContext({
-    headers: {
-      Authorization: "JWT " +localStorage.getItem('token') || null,
-    }
-  });
+  if(localStorage.getItem('token')){
+    operation.setContext({
+        headers: {
+          Authorization: "JWT " +localStorage.getItem('token') || null,
+        }    
+    });
+  }
 
   return forward(operation);
 })
+
+const defaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all',
+  },
+}
 
 // Instantiate client
 const client = new ApolloClient({
   link: concat(authMiddleware, link),
   // link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  defaultOptions: defaultOptions
+
 })
 
 
@@ -98,7 +111,8 @@ const client = new ApolloClient({
 //   }
 // });
 
-export default new ApolloClient({
-  link: concat(authMiddleware, link),
-  cache: new InMemoryCache()
-})
+// export default new ApolloClient({
+//   link: concat(authMiddleware, link),
+//   cache: new InMemoryCache()
+// })
+export default client

@@ -6,16 +6,15 @@ const defaultState = {
   orders: []
 };
 
-const userReducer = (state = defaultState, action) => {
+const orderReducer = (state = defaultState, action) => {
     switch(action.type){
         case ADD_ORDER:
             // console.log("action", action)
             return Object.assign({}, state, {
                 orders: [...action.payload]
               });
-
         default: return state
     }
 }
 
-export default userReducer
+export default orderReducer

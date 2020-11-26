@@ -5,6 +5,8 @@ import LoginComponent from './components/LoginComponentt'
 import SignUpComponent from './components/SignUpComponent'
 import OrderComponent from './components/OrderComponent'
 import {autoLogin} from './redux/actions/userActions'
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +24,7 @@ class App extends React.Component{
   }
 
   render(){
+    // console.log(this.props.userReducer.loggedIn)
     return (
       // <div className="App">
       //       {
@@ -32,9 +35,16 @@ class App extends React.Component{
       //      <button>Logout</button>
       // </div>
       <div className="App">
+        <Router>
+          <Switch>
+            {/* <PublicRoute restricted={false} component={Home} path="/" exact /> */}
+            <PublicRoute restricted={true} component={LoginComponent} path="/login" exact />
+            <PrivateRoute component={OrderComponent} path="/" exact />
+          </Switch>
+        </Router>
 
 
-      <Router>
+      {/* <Router>
         <Switch>
           <Route path="/login">
             <LoginComponent />
@@ -43,14 +53,13 @@ class App extends React.Component{
             <SignUpComponent />
           </Route>
           <Route path="/">
-          {/* {
-              !this.props.userReducer.loggedIn ? <h1>Sign Up or Login!</h1> : <h1>Welcome, {this.props.userReducer.user.username}</h1>
-            } */}
-            <OrderComponent />
+          {
 
+              !this.props.userReducer.loggedIn ? <h1>Sign Up or Login!</h1> : <OrderComponent />
+            }
           </Route>
         </Switch>
-    </Router>
+    </Router> */}
       </div>
     );
   }
