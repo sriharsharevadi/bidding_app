@@ -1,10 +1,11 @@
 // Action Creators
 import jwt_decode from "jwt-decode";
-import {LOGIN_USER,VERIFY_USER} from '../../graphql/mutations'
+import {CREATE_USER, LOGIN_USER,VERIFY_USER} from '../../graphql/mutations'
 
 import client from '../../graphql/graphql'
 
 const setUser = (payload) => ({ type: "SET_USER", payload})
+const error = (payload) => ({type: "ERROR", payload})
 
 export const logUserOut = () => ({type: "LOG_OUT"})
 
@@ -18,27 +19,43 @@ export const fetchUser = (userInfo) => dispatch => {
             password: userInfo.password
         },
     })
-    .then(res => res.data)
-    .then(data => {
-        // console.log(data)
-        localStorage.setItem("token", data.tokenAuth.token)
-        dispatch(setUser(data.tokenAuth.payload))
+    .then(req => {
+        // console.log(req.data)
+        if (req.data.tokenAuth.errors){
+            dispatch(error(req.data.tokenAuth.errors[0].messages))
+        }
+        else{
+            localStorage.setItem("token", req.data.tokenAuth.token)
+            dispatch(setUser(req.data.tokenAuth.payload))
+        }        
     })
+    .catch(err => { 
+        console.log( err)
+        dispatch(error([err.toString()]))
+    })
+
 }
 
-export const signUserUp = (userInfo) => dispatch => {
-    fetch(`http://localhost:4000/users`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+export const createUser = (userInfo) => dispatch => {
+    client.mutate({
+        mutation: CREATE_USER,
+        variables: {
+            username: userInfo.username,
+            password: userInfo.password,
+            email: userInfo.email
         },
-        body: JSON.stringify(userInfo)
     })
-    .then(res => res.json())
-    .then(data => {
-        localStorage.setItem("token", data.token)
-        dispatch(setUser(data.user))
+    .then(req => {
+        if (req.data.createUser.errors){
+            dispatch(error(req.data.createUser.errors[0].messages))
+        }
+        else{
+            fetchUser(userInfo)(dispatch)
+        }
+        
+    })
+    .catch(err => { 
+        console.log(err)
     })
 }
 

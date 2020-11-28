@@ -39,6 +39,7 @@ class App extends React.Component{
           <Switch>
             {/* <PublicRoute restricted={false} component={Home} path="/" exact /> */}
             <PublicRoute restricted={true} component={LoginComponent} path="/login" exact />
+            <PublicRoute restricted={true} component={SignUpComponent} path="/register" exact />
             <PrivateRoute component={OrderComponent} path="/" exact />
           </Switch>
         </Router>

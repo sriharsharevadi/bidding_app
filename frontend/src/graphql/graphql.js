@@ -56,8 +56,11 @@ const defaultOptions = {
   },
   query: {
     fetchPolicy: 'no-cache',
-    errorPolicy: 'all',
+    errorPolicy: 'ignore',
   },
+  mutation:{
+    errorPolicy: 'all',
+  }
 }
 
 // Instantiate client

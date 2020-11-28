@@ -1,13 +1,9 @@
 import gql from 'graphql-tag'
 
 const ALL_ORDERS_SUB = gql`
-subscription{
-  onNewOrder{
-   order {
-     id
-    quantity
-    type
-   }
+subscription ($model: String!){
+  refresh(model: $model) {
+    model
   }
 }
 `

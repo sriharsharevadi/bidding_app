@@ -26,7 +26,8 @@ class Order(models.Model):
             MinValueValidator(1)
         ]
      )
-    user = models.ForeignKey(User, related_name='order_user', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='user_order', on_delete=models.CASCADE)
+    # bid = models.ManyToManyField(Bid, related_name='order_bid', on_delete = models.CASCADE)
 
 
 class Bid(models.Model):
@@ -36,8 +37,8 @@ class Bid(models.Model):
             MinValueValidator(1)
         ]
      )
-    order = models.ForeignKey(User, related_name='bid_order', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='bid_user', on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, related_name='order_bid', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='user_bid', on_delete=models.CASCADE)
     accepted = models.BooleanField(default=False)
 
     class Meta:

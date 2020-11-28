@@ -5,15 +5,11 @@ from graphene_django import DjangoObjectType
 import channels_graphql_ws
 from graphene_django.debug import DjangoDebug
 from rest_framework import serializers
-from django.db.models import Q
-
-
+from graphene_django.rest_framework.mutation import SerializerMutation
 
 
 from webapp.models import Order, Bid
 from django.contrib.auth import get_user_model
-from graphene_django.rest_framework.mutation import SerializerMutation
-
 from webapp.serializers import UserSerializer, OrderSerializer, BidSerializer
 
 
@@ -39,15 +35,16 @@ class Query(graphene.ObjectType):
     debug = graphene.Field(DjangoDebug, name='_debug')
     all_orders = graphene.List(OrdType)
     bids_by_order = graphene.List(BidType, order_id=graphene.Int(required=True))
-    users = graphene.List(UserType)
+    # users = graphene.List(UserType)
     me = graphene.Field(UserType)
 
-    def resolve_users(self, info):
-        return get_user_model().objects.all()
+    # def resolve_users(self, info):
+    #     return get_user_model().objects.all()
 
     def resolve_me(self, info):
         print(info.context)
         user = info.context.user
+
         if user.is_anonymous:
             raise Exception('Not logged in!')
 
@@ -57,11 +54,12 @@ class Query(graphene.ObjectType):
         # print(info.context.user)
         # We can easily optimize query count in the resolve method
         print(info.context)
-        return Order.objects.all().exclude(user__username=info.context.user)
+        # Order.objects.filter()
+        return Order.objects.all().exclude(user__username=info.context.user).exclude( order_bid__user__username=info.context.user)
 
     def resolve_bids_by_order(root, info, order_id):
         try:
-            return Bid.objects.filter(user_id=order_id)
+            return Bid.objects.filter(order_id=order_id)
         except Bid.DoesNotExist:
             return None
 #
@@ -103,7 +101,7 @@ class OrderMutation(SerializerMutation):
     @classmethod
     def perform_mutate(cls, serializer, info):
         obj = serializer.save()
-        OnNewOrder.new_order()
+        OnNewOrder.new_order("order")
 
         kwargs = {}
         for f, field in serializer.fields.items():
@@ -116,11 +114,71 @@ class OrderMutation(SerializerMutation):
         return cls(errors=None, **kwargs)
 
 
+class CreateBid(graphene.Mutation):
+    bid = graphene.Field(BidType)
+
+    class Arguments:
+        id = graphene.Int(required=False)
+        price = graphene.Int(required=True)
+        orderId = graphene.String(required=True)
+
+    def mutate(self, info, **kwargs):
+        # print(kwargs)
+        id = kwargs.get('id', None)
+        price = kwargs.get('price', None)
+        orderId = kwargs.get('orderId', None)
+
+        if id:
+            bid = Bid.objects.get(pk=id)
+            bid.price = price
+            bid.save()
+        else:
+            user = info.context.user
+            order = Order.objects.get(pk= orderId)
+            bid = Bid(
+                price=price,
+                order=order,
+                user=user,
+            )
+            bid.save()
+
+        # OnNewOrder.new_order(quantity=quantity, type=type, user=user)
+        return CreateBid(bid=bid)
+
+
 class BidMutation(SerializerMutation):
     class Meta:
         serializer_class = BidSerializer
         model_operations = ['create', 'update']
         lookup_field = 'id'
+
+    @classmethod
+    def mutate_and_get_payload(cls, root, info, **input):
+        kwargs = cls.get_serializer_kwargs(root, info, **input)
+        serializer = cls._meta.serializer_class(**kwargs)
+
+        if serializer.is_valid():
+            return cls.perform_mutate(serializer, info)
+        else:
+            errors = ErrorType.from_errors(serializer.errors)
+
+            return cls(errors=errors)
+
+    @classmethod
+    def perform_mutate(cls, serializer, info):
+        print("hii", serializer.data)
+        obj = serializer.save()
+        OnNewOrder.new_order()
+
+        kwargs = {}
+        for f, field in serializer.fields.items():
+            if not field.write_only:
+                if isinstance(field, serializers.SerializerMethodField):
+                    kwargs[f] = field.to_representation(obj)
+                else:
+                    kwargs[f] = field.get_attribute(obj)
+
+        return cls(errors=None, **kwargs)
 
     # @classmethod
     # def get_serializer_kwargs(cls, root, info, **input):
@@ -158,7 +216,7 @@ class BidMutation(SerializerMutation):
 class Mutation(graphene.ObjectType):
     create_user = UserMutation.Field()
     create_order = OrderMutation.Field()
-    bid_serializer = BidMutation.Field()
+    create_bid = CreateBid.Field()
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
     verify_token = graphql_jwt.Verify.Field()
     refresh_token = graphql_jwt.Refresh.Field()
@@ -167,20 +225,20 @@ class Mutation(graphene.ObjectType):
 class OnNewOrder(channels_graphql_ws.Subscription):
     """Subscription triggers on a new chat message."""
 
-    order = graphene.List(OrdType)
+    model = graphene.String()
 
-    # class Arguments:
-    #     """Subscription arguments."""
-    #
-    #     chatroom = graphene.String()
+    class Arguments:
+        """Subscription arguments."""
 
-    def subscribe(self, info):
+        model = graphene.String()
+
+    def subscribe(self, info, model):
         """Client subscription handler."""
         del info
         # Specify the subscription group client subscribes to.
         # return [chatroom] if chatroom is not None else None
 
-    def publish(self, info):
+    def publish(self, info, model):
         print('im publishing')
         # print(info.context.user)
         """Called to prepare the subscription notification message."""
@@ -189,7 +247,7 @@ class OnNewOrder(channels_graphql_ws.Subscription):
         # quantity = self["quantity"]
         # type = self["type"]
         # user = self["user"]
-        order = Order.objects.all()
+        model = model
 
         # Method is called only for events on which client explicitly
         # subscribed, by returning proper subscription groups from the
@@ -203,14 +261,13 @@ class OnNewOrder(channels_graphql_ws.Subscription):
         #     and new_msg_sender == info.context.user.username
         # ):
         #     return OnNewOrder.SKIP
-        print(order)
 
         return OnNewOrder(
-            order=order,
+            model=model,
         )
 
     @classmethod
-    def new_order(cls):
+    def new_order(cls, model):
         """Auxiliary function to send subscription notifications.
 
         It is generally a good idea to encapsulate broadcast invocation
@@ -219,14 +276,16 @@ class OnNewOrder(channels_graphql_ws.Subscription):
         implementation details.
         """
         cls.broadcast(
-            payload={},
+            payload={
+                'model': model
+            },
         )
 
 
 class Subscription(graphene.ObjectType):
     """GraphQL subscriptions."""
 
-    on_new_order= OnNewOrder.Field()
+    refresh= OnNewOrder.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation, subscription=Subscription)

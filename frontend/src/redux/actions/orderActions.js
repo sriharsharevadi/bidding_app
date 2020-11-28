@@ -16,19 +16,25 @@ export const fetchOrders = () => dispatch => {
         query: ALL_ORDERS,
     })
     .then(res => {
-        console.log(res.data.allOrders)
+        // console.log(res.data.allOrders)
         dispatch(allOrders(res.data.allOrders))
     })
 }
 
 
-export const refreshOrders = () => dispatch => {
+export const refreshOrders = (model) => dispatch => {
     client.subscribe({
         query: ALL_ORDERS_SUB,
+        variables:{
+            model: model
+        }
     })
     .subscribe(res => {
-        console.log(res.data.onNewOrder)
-        dispatch(allOrders(res.data.onNewOrder.order))
+        console.log(res.data)
+        if (res.data.refresh.model === "orders"){
+            fetchOrders()(dispatch)
+        }
+        // dispatch(allOrders(res.data.onNewOrder.order))
     })
 }
 

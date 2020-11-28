@@ -3,21 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ebffc50e-a053-4086-ab13-a766bf534fae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bidding_app/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/bidding_app/routing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bidding_app/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/bidding_app/schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bidding_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bidding_app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bidding_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bidding_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/LoginComponentt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/LoginComponentt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/OrderComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/OrderComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/graphql/graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/graphql/graphql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/SignUpComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/SignUpComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/actions/orderActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/actions/orderActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/redux/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/actions/userActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/reducers/orderReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/reducers/orderReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/reducers/userReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,11 +64,56 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bidding_app/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="702">
               <caret line="150" selection-start-line="150" selection-end-line="150" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bidding_app/schema.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="287" column="11" selection-start-line="287" selection-start-column="11" selection-end-line="287" selection-end-column="11" />
+              <folding>
+                <element signature="e#23#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.virtualenvs/bidding-app/lib/python3.6/site-packages/graphene_django/rest_framework/mutation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,6 +176,10 @@
       <find>New client connected!</find>
       <find>OnNewOrder</find>
       <find>chan</find>
+      <find>User</find>
+      <find>vali</find>
+      <find>err</find>
+      <find>obj</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,15 +191,15 @@
         <option value="$PROJECT_DIR$/webapp/admin.py" />
         <option value="$PROJECT_DIR$/bidding_app/app.py" />
         <option value="$PROJECT_DIR$/bidding_app/graphiql.html" />
-        <option value="$PROJECT_DIR$/webapp/serializers.py" />
-        <option value="$PROJECT_DIR$/webapp/models.py" />
         <option value="$PROJECT_DIR$/bidding_app/graphql.py" />
         <option value="$PROJECT_DIR$/bidding_app/asgi.py" />
         <option value="$PROJECT_DIR$/bidding_app/routing.py" />
         <option value="$PROJECT_DIR$/bidding_app/urls.py" />
-        <option value="$PROJECT_DIR$/bidding_app/schema.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/bidding_app/settings.py" />
+        <option value="$PROJECT_DIR$/webapp/models.py" />
+        <option value="$PROJECT_DIR$/webapp/serializers.py" />
+        <option value="$PROJECT_DIR$/bidding_app/schema.py" />
       </list>
     </option>
   </component>
@@ -169,7 +215,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,6 +236,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,18 +305,46 @@
       <updated>1605961784422</updated>
       <workItem from="1605961785688" duration="33460000" />
       <workItem from="1606121236452" duration="35097000" />
-      <workItem from="1606399232827" duration="250000" />
+      <workItem from="1606399232827" duration="1264000" />
+      <workItem from="1606495286163" duration="16162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68807000" />
+    <option name="totallyTimeSpent" value="85983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.255119" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.257886" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="DB Browser" order="2" />
+      <window_info id="Project Explorer" order="3" weight="0.32982844" />
+      <window_info id="Job Explorer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28401726" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Console" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="DB Execution Console" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" weight="0.32937366" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.2149028" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5002767" side_tool="true" weight="0.17494601" />
+      <window_info anchor="bottom" id="Python Console" order="14" weight="0.32937366" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.31876037" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.257886" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Project Explorer" order="3" weight="0.32982844" />
@@ -288,35 +362,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.46328294" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5002767" side_tool="true" weight="0.17494601" />
-      <window_info anchor="bottom" id="Python Console" order="14" weight="0.32937366" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.31876037" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25235197" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="DB Browser" order="2" />
-      <window_info id="Project Explorer" order="3" weight="0.32982844" />
-      <window_info id="Job Explorer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39956802" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Console" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="DB Execution Console" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" weight="0.29157668" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.28401726" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5002767" side_tool="true" weight="0.17494601" />
       <window_info anchor="bottom" id="Python Console" order="14" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -334,28 +380,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="6" />
+          <line>168</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/webapp/serializers.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="7" />
+          <line>19</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>231</line>
-          <option name="timeStamp" value="8" />
+          <line>156</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
+          <line>157</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -409,16 +450,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bidding_app/graphql.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bidding_app/asgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -436,13 +467,6 @@
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/bidding-app/lib/python3.6/site-packages/graphene_django/rest_framework/mutation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="36" selection-start-line="3" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -467,16 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -505,16 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="77" selection-start-line="77" selection-end-line="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding_app/schema.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="231" selection-start-line="231" selection-end-line="231" />
-          <folding>
-            <element signature="e#23#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -593,8 +597,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bidding_app/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="702">
           <caret line="150" selection-start-line="150" selection-end-line="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/bidding-app/lib/python3.6/site-packages/graphene_django/rest_framework/mutation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/bidding-app/lib/python3.6/site-packages/graphql/execution/middleware.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding_app/schema.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="287" column="11" selection-start-line="287" selection-start-column="11" selection-end-line="287" selection-end-column="11" />
+          <folding>
+            <element signature="e#23#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
