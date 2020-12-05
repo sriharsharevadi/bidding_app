@@ -4,11 +4,13 @@ import BootstrapTable from "react-bootstrap-table-next"
 import paginationFactory from 'react-bootstrap-table2-paginator'
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit"
 
-import {fetchOrders, refreshOrders} from '../redux/actions/orderActions'
+import {fetchOrders} from '../redux/actions/orderActions'
 import {logUserOut} from '../redux/actions/userActions'
 import {showModal} from '../redux/actions/modalActions'
 import BidModal from './bidModal'
 import {AVAILABLE_ORDERS_QUERY} from '../graphql/queries'
+import client from '../graphql/graphql'
+import {ALL_ORDERS_SUB} from '../graphql/subscriptions'
 
 const { SearchBar } = Search;
 
@@ -33,10 +35,27 @@ class OrderComponent extends React.Component {
   };
 
   componentDidMount(){
-    const {fetchOrders, refreshOrders} = this.props;
-      fetchOrders(AVAILABLE_ORDERS_QUERY)
-      refreshOrders("orders", AVAILABLE_ORDERS_QUERY)
+    const {fetchOrders} = this.props;
+    fetchOrders(AVAILABLE_ORDERS_QUERY)
+    this.subscription = client.subscribe({
+      query: ALL_ORDERS_SUB,
+      variables:{
+          model: "orders"
+      }
+    })
+    .subscribe(res => {
+      // console.log(res.data)
+      if (res.data.refresh.model === "orders"){
+        fetchOrders(AVAILABLE_ORDERS_QUERY)
+      }
+    })
   }
+  
+  componentWillUnmount(){
+    this.subscription.unsubscribe()
+    // console.log("unsubscribe")
+  }
+
 
   onSubmit = (e) => {
     e.preventDefault()
@@ -142,7 +161,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchOrders: (query) => dispatch(fetchOrders(query)),
-        refreshOrders: (model, query) => dispatch(refreshOrders(model, query)),
         logUserOut: () => dispatch(logUserOut()),
         showModal: (row) => dispatch(showModal(row)),
     }

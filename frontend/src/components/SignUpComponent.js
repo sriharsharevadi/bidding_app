@@ -85,7 +85,7 @@ class SignUpComponent extends React.Component {
 
                 <button type="submit" name="Login" className="btn btn-primary btn-block">Register</button>
                     <p className="forgot-password text-right">
-                        <Link to="/login"><button type="button" className="btn btn-secondary btn-sm">Log in</button></Link>
+                        <a href="/login"><button type="button" className="btn btn-secondary btn-sm">Log in</button></a>
                     </p>
             </form>
             </div>

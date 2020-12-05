@@ -34,7 +34,12 @@ class Order(TimeStampMixin):
         ]
      )
     user = models.ForeignKey(User, related_name='user_order', on_delete=models.CASCADE)
-    # bid = models.ManyToManyField(Bid, related_name='order_bid', on_delete = models.CASCADE)
+
+    class Meta:
+        unique_together = ('type', 'user')
+
+    def __str__(self):
+        return 'Bid: ' + self.id
 
 
 class Bid(TimeStampMixin):
@@ -52,8 +57,14 @@ class Bid(TimeStampMixin):
         unique_together = ('order', 'user')
         ordering = ['-price']
 
+    def __str__(self):
+        return 'Bid: ' + self.id
+
 
 class Config(TimeStampMixin):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=200)
     enabled = models.BooleanField(default=False)
+
+    def __str__(self):
+        return 'Config: ' + self.name

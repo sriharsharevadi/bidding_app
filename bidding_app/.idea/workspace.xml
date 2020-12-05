@@ -2,30 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebffc50e-a053-4086-ab13-a766bf534fae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bidding_app/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/bidding_app/schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bidding_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bidding_app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/BidsListModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/BidsListModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/LoginComponentt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/LoginComponentt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/MyOrdersComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/MyOrdersComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/OrderComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/OrderComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/SignUpComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/SignUpComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/bidModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/bidModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/graphql/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/graphql/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/graphql/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/graphql/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/actionTypes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/actionTypes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/actions/modalActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/actions/modalActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/redux/actions/orderActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/actions/orderActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/reducers/modalReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/reducers/modalReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/redux/reducers/orderReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/redux/reducers/orderReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/routes/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/routes/PrivateRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/routes/PublicRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/routes/PublicRoute.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,15 +43,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.virtualenvs/bidding-app/lib/python3.6/site-packages/django/views/generic/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="62" selection-start-line="62" selection-end-line="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bidding_app/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="202">
@@ -78,13 +54,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bidding_app/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="2030">
+              <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
               <folding>
                 <element signature="e#23#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bidding_app/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="535">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+              <folding>
+                <element signature="e#635#667#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+              <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -180,9 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>group42</find>
-      <find>MySubscription</find>
-      <find>subscribe</find>
       <find>UserType</find>
       <find>Subscription</find>
       <find>quantity</find>
@@ -210,6 +195,9 @@
       <find>err</find>
       <find>CreateBid</find>
       <find>stati</find>
+      <find>UserSerializer</find>
+      <find>UserMutation</find>
+      <find>new_order</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,10 +215,10 @@
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/webapp/serializers.py" />
         <option value="$PROJECT_DIR$/webapp/admin.py" />
-        <option value="$PROJECT_DIR$/webapp/models.py" />
         <option value="$PROJECT_DIR$/webapp/helpers.py" />
-        <option value="$PROJECT_DIR$/bidding_app/schema.py" />
         <option value="$PROJECT_DIR$/bidding_app/settings.py" />
+        <option value="$PROJECT_DIR$/bidding_app/schema.py" />
+        <option value="$PROJECT_DIR$/webapp/models.py" />
       </list>
     </option>
   </component>
@@ -339,12 +327,12 @@
       <workItem from="1606399232827" duration="1264000" />
       <workItem from="1606495286163" duration="28347000" />
       <workItem from="1606829464315" duration="8700000" />
-      <workItem from="1606999673111" duration="4077000" />
+      <workItem from="1606999673111" duration="5465000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110945000" />
+    <option name="totallyTimeSpent" value="112333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -367,7 +355,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.51943845" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.28293738" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5002767" side_tool="true" weight="0.17494601" />
       <window_info anchor="bottom" id="Python Console" order="14" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -412,24 +400,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>208</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/webapp/serializers.py</url>
           <line>19</line>
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>196</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bidding_app/schema.py</url>
-          <line>197</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -492,16 +465,6 @@
           <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#635#667#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -628,16 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -687,10 +640,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bidding_app/schema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="2030">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
           <folding>
             <element signature="e#23#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#635#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -160,8 +160,10 @@ class ModalComponent extends React.Component {
             {this.props.errors}
           </div>
           {
-            bid.price && "Bid Successfully Placed"
-          }
+            bid.price && 
+            <div className="alert alert-success m-0">
+              Bid Successfully Placed
+            </div>           }
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => {

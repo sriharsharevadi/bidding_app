@@ -28,21 +28,6 @@ export const fetchOrders = (query) => dispatch => {
   })
 }
 
-export const refreshOrders = (model, query) => dispatch => {
-  client.subscribe({
-    query: ALL_ORDERS_SUB,
-    variables:{
-        model: model
-    }
-  })
-  .subscribe(res => {
-    // console.log(res.data)
-    if (res.data.refresh.model === "orders"){
-      fetchOrders(query)(dispatch)
-    }
-  })
-}
-
 export const fetchOrderDetails = (orderId, req) => dispatch => {
   // console.log('fetching', orderId)
   client.query({

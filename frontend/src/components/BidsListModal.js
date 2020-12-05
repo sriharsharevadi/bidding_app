@@ -73,14 +73,13 @@ class BidsListModalComponent extends React.Component {
 
   componentWillUnmount(){
     this.subscription.unsubscribe()
-    console.log("unsubscribe")
+    // console.log("unsubscribe")
   }
 
   onFollowChanged() {
     this.props.hideModal();
-
-
   }
+  
   handleOnChange = (e) => {
     e.persist();
     this.setState(() => ({

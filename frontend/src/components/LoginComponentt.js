@@ -77,7 +77,7 @@ class LoginComponent extends React.Component {
 								Log In
 						</button>
 						<p className="forgot-password text-right">
-							<Link to="/register"><button type="button" className="btn btn-secondary btn-sm">Register</button></Link>
+							<a href="/register"><button type="button" className="btn btn-secondary btn-sm">Register</button></a>
 						</p>
 					</form>
 				</div>
