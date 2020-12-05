@@ -13,5 +13,4 @@ const rootReducer = combineReducers({
     bidReducer
 })
 
-
 export default rootReducer

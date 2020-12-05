@@ -1,29 +1,28 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import BootstrapTable from "react-bootstrap-table-next";
-import BidModal from './bidModal'
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
-
+import BootstrapTable from "react-bootstrap-table-next"
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit"
 
 import {fetchOrders, refreshOrders} from '../redux/actions/orderActions'
 import {logUserOut} from '../redux/actions/userActions'
 import {showModal} from '../redux/actions/modalActions'
+import BidModal from './bidModal'
 import {AVAILABLE_ORDERS_QUERY} from '../graphql/queries'
 
 const { SearchBar } = Search;
+
 
 class OrderComponent extends React.Component {
 
   onFollowChanged(row) {
      this.props.showModal(row);
-
   }
 
   linkFollow = (cell, row, rowIndex, formatExtraData) => {
     return (
       <button type="button"
-        class="btn btn-info"
+        className="btn btn-info"
         onClick={() => {
           this.onFollowChanged(row);
         }}
@@ -50,7 +49,6 @@ class OrderComponent extends React.Component {
   }
 
   render(){
-    // console.log(this.props.modal.modalType != null)
     const {orders, modal} = this.props
     // console.log(modal)
     return(
@@ -99,11 +97,11 @@ class OrderComponent extends React.Component {
                     id="datatable-basic_filter"
                     className="dataTables_filter px-4 pb-1"
                   >
-                    <div class="row">
-                      <div class="col centered-text vertical-center">
+                    <div className="row">
+                      <div className="col centered-text vertical-center">
                         <p className="h3 centered-text">Available Orders</p>
                       </div>
-                      <div class="col-4">
+                      <div className="col-4">
                         <label className="centered-text">
                           Search:
                           <SearchBar

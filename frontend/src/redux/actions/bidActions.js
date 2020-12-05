@@ -3,19 +3,10 @@ import {CREATE_BID} from '../../graphql/mutations'
 import {ADD_BID,ALL_BIDS, BIDS_FROM_ORDER,ORDER_DETAILS} from '../actionTypes'
 import {fetchOrders} from './orderActions'
 import {MY_BIDS_QUERY} from '../../graphql/queries'
-import {ALL_ORDERS_SUB} from '../../graphql/subscriptions'
-import {fetchOrderDetails} from './orderActions'
-
-
-
 
 const error = (payload) => ({type: "ERROR", payload})
-
 const addBid = (payload) => ({ type: ADD_BID, payload})
 const allBids = (payload) => ({ type: ALL_BIDS, payload})
-
-
-
 
 export const createBid = (bidInfo) => dispatch => {
   // console.log(bidInfo)
@@ -34,7 +25,7 @@ export const createBid = (bidInfo) => dispatch => {
   .catch(err => { 
     // console.log( err)
     // dispatch(error([err.toString()]))
-})
+  })
 }
 
 export const fetchBids = () => dispatch => {
@@ -42,8 +33,6 @@ export const fetchBids = () => dispatch => {
       query: MY_BIDS_QUERY
   })
   .then(res => {
-      console.log(res.data)
-      dispatch(allBids(res.data.myBids))
-      
+      dispatch(allBids(res.data.myBids))    
   })
 }

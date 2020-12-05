@@ -5,13 +5,13 @@ import BidsListModalComponent from './BidsListModal'
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 
-
 import {fetchOrders, refreshOrders} from '../redux/actions/orderActions'
 import {logUserOut} from '../redux/actions/userActions'
 import {showModal} from '../redux/actions/modalActions'
 import {MY_ORDERS_QUERY} from '../graphql/queries'
 
 const { SearchBar } = Search;
+
 
 class MyOrderComponent extends React.Component {
 
@@ -22,7 +22,7 @@ class MyOrderComponent extends React.Component {
   linkFollow = (cell, row, rowIndex, formatExtraData) => {
     return (
       <button type="button"
-        class="btn btn-primary"
+        className="btn btn-primary"
         onClick={() => {
           this.onFollowChanged(row);
         }}
@@ -93,11 +93,11 @@ class MyOrderComponent extends React.Component {
                     id="datatable-basic_filter"
                     className="dataTables_filter px-4 pb-1"
                   >
-                    <div class="row">
-                      <div class="col centered-text vertical-center">
+                    <div className="row">
+                      <div className="col centered-text vertical-center">
                         <p className="h3 centered-text">My Orders</p>
                       </div>
-                      <div class="col-4">
+                      <div className="col-4">
                         <label className="centered-text">
                           Search:
                           <SearchBar

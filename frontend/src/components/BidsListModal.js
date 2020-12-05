@@ -2,16 +2,14 @@ import React from 'react'
 import {Modal} from 'react-bootstrap'
 import { Button } from "react-bootstrap"
 import {connect} from 'react-redux'
-import BootstrapTable from "react-bootstrap-table-next";
+import BootstrapTable from "react-bootstrap-table-next"
+import ToolkitProvider from "react-bootstrap-table2-toolkit"
+import paginationFactory from 'react-bootstrap-table2-paginator'
 
 import {hideModal} from '../redux/actions/modalActions'
 import {fetchOrderDetails} from '../redux/actions/orderActions';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import client from '../graphql/graphql'
 import {ALL_ORDERS_SUB} from '../graphql/subscriptions'
-
-
 
 const pagination = paginationFactory({
   page: 1,
@@ -55,6 +53,7 @@ class BidsListModalComponent extends React.Component {
       </Button>
     );
   };
+
   componentDidMount(){
     this.props.fetchOrderDetails(this.props.modal.modalPropsid, true);
     // this.subscription = this.props.refreshBids(this.props.modal.modalPropsid, true);
@@ -78,10 +77,6 @@ class BidsListModalComponent extends React.Component {
   }
 
   onFollowChanged() {
-    // this.setState({ isFollow: !this.state.isFollow });
-    // this.props.showModal({modalType: "BID_MODAL", modalProps: {
-    //   id: row.id
-    // }})
     this.props.hideModal();
 
 
@@ -96,9 +91,6 @@ class BidsListModalComponent extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    // this.setState(() => ({
-    //   orderId: this.props.modal.modalPropsid
-    // }))
     this.props.createBid(this.state)
   }
   render(){
@@ -122,15 +114,15 @@ class BidsListModalComponent extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div class="container">
-            <div class="row">
-              <div class="col border rounded"><strong>Product:</strong> {order.type}</div>
-              <div class="col border rounded" ><strong>Quantity:</strong> {order.quantity}</div>
+          <div className="container">
+            <div className="row">
+              <div className="col border rounded"><strong>Product:</strong> {order.type}</div>
+              <div className="col border rounded" ><strong>Quantity:</strong> {order.quantity}</div>
             </div>
           </div>
           <>
             <ToolkitProvider
-              data={this.props.bids}
+              data={bids}
               keyField="id"
               columns={[
                 {
@@ -156,21 +148,6 @@ class BidsListModalComponent extends React.Component {
               >
               {props => (
                 <div className="py-4">
-                  <div
-                    id="datatable-basic_filter"
-                    className="dataTables_filter px-4 pb-1"
-                  >
-                
-                        {/* <label className="centered-text">
-                          Search:
-                          <SearchBar
-                            className="form-control-sm"
-                            placeholder=""
-                            {...props.searchProps}
-                          />
-                        </label> */}
-    
-                  </div>
                   <BootstrapTable
                     {...props.baseProps}
                     bootstrap4={true}
@@ -183,18 +160,13 @@ class BidsListModalComponent extends React.Component {
           </>
             <div>
                 {this.props.errors}
-                {/* { this.props.errors && this.props.errors[0] &&
-                    <FormText>
-                        {this.props.errors.map((error, i) => <p key={i}>{error}</p>)}
-                    </FormText>
-                } */}
             </div>
         </Modal.Body>
         <Modal.Footer>
             <Button onClick={() => {
                 this.onFollowChanged();
                 }}
-            >Close
+            >  Close
             </Button>
         </Modal.Footer>
       </Modal>
@@ -203,13 +175,11 @@ class BidsListModalComponent extends React.Component {
 }
 
 
-
 const mapStateToProps = (state) => {
   return {
     modal: state.modalReducer,
     order: state.orderReducer.orderDetails,
     bids: state.bidReducer.bids,
-
     errors: state.errorReducer.errors
   }
 }

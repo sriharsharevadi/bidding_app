@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createUser, fetchUser} from '../redux/actions/userActions'
-import { FormText } from 'react-bootstrap';
+import {createUser} from '../redux/actions/userActions'
 import { Link } from 'react-router-dom';
 
 
@@ -86,7 +85,7 @@ class SignUpComponent extends React.Component {
 
                 <button type="submit" name="Login" className="btn btn-primary btn-block">Register</button>
                     <p className="forgot-password text-right">
-                        <Link to="/login"><button type="button" class="btn btn-secondary btn-sm">Log in</button></Link>
+                        <Link to="/login"><button type="button" className="btn btn-secondary btn-sm">Log in</button></Link>
                     </p>
             </form>
             </div>

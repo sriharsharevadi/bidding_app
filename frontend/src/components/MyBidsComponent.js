@@ -1,12 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import BootstrapTable from "react-bootstrap-table-next";
+import BootstrapTable from "react-bootstrap-table-next"
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit"
 
-import {fetchBids} from '../redux/actions/bidActions';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
+import {fetchBids} from '../redux/actions/bidActions'
 
 const { SearchBar } = Search;
+
 
 class MyBidComponent extends React.Component {
 
@@ -16,7 +17,6 @@ class MyBidComponent extends React.Component {
   }
 
   render(){
-    // console.log(this.props.modal.modalType != null)
     // console.log(modal)
     return(
       <div className="content">
@@ -64,11 +64,11 @@ class MyBidComponent extends React.Component {
                     id="datatable-basic_filter"
                     className="dataTables_filter px-4 pb-1"
                   >
-                    <div class="row">
-                      <div class="col centered-text vertical-center">
+                    <div className="row">
+                      <div className="col centered-text vertical-center">
                         <p className="h3 centered-text">My Bids</p>
                       </div>
-                      <div class="col-4">
+                      <div className="col-4">
                         <label className="centered-text">
                           Search:
                           <SearchBar
@@ -97,16 +97,15 @@ class MyBidComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-      bids: state.bidReducer.bids,
-    }
+  return {
+    bids: state.bidReducer.bids,
   }
+}
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchBids: () => dispatch(fetchBids()),
-        // refreshOrders: (model, query) => dispatch(refreshOrders(model,query)),
-    }
+  return {
+    fetchBids: () => dispatch(fetchBids()),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyBidComponent)

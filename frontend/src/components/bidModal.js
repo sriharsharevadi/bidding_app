@@ -2,14 +2,13 @@ import React from 'react'
 import {Modal} from 'react-bootstrap'
 import { Button } from "react-bootstrap"
 import {connect} from 'react-redux'
+import BootstrapTable from "react-bootstrap-table-next"
+
 import {hideModal} from '../redux/actions/modalActions'
 import {createBid} from '../redux/actions/bidActions'
 import {fetchOrderDetails} from '../redux/actions/orderActions'
-import BootstrapTable from "react-bootstrap-table-next";
 import client from '../graphql/graphql'
 import {ALL_ORDERS_SUB} from '../graphql/subscriptions'
-
-
 
 
 class ModalComponent extends React.Component {
@@ -42,24 +41,18 @@ class ModalComponent extends React.Component {
             dataField: "user.email",
             text: "Dealer Email"
           },
-        // {
-        //   dataField: "follow",
-        //   text: "Follow",
-        //   formatter: this.linkFollow,
-        //   sort: true
-
-        // }
       ],
     };
-
-    // this.onFollowChanged.bind(this);
   }
+
   componentDidMount(){
+
     this.props.fetchOrderDetails(this.props.modal.modalPropsid, false);
+
     this.subscription = client.subscribe({
       query: ALL_ORDERS_SUB,
       variables:{
-          model: "bids"
+        model: "bids"
       }
     })
     .subscribe(res => {
@@ -72,18 +65,12 @@ class ModalComponent extends React.Component {
 
   componentWillUnmount(){
     this.subscription.unsubscribe()
-    console.log("unsubscribe")
   }
 
   onFollowChanged() {
-    // this.setState({ isFollow: !this.state.isFollow });
-    // this.props.showModal({modalType: "BID_MODAL", modalProps: {
-    //   id: row.id
-    // }})
     this.props.hideModal();
-
-
   }
+
   handleOnChange = (e) => {
     e.persist();
     this.setState(() => ({
@@ -94,14 +81,12 @@ class ModalComponent extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    // this.setState(() => ({
-    //   orderId: this.props.modal.modalPropsid
-    // }))
     this.props.createBid(this.state)
   }
+
   render(){
-    const {modal, order, bid} = this.props 
-    console.log(bid.bids)
+    const { order, bid} = this.props 
+    // console.log(bid.bids)
 
     return (
       <Modal        
@@ -109,7 +94,7 @@ class ModalComponent extends React.Component {
         // size="lg-2"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        >
+      >
         <Modal.Header closeButton
           onClick={() => {
             this.onFollowChanged();
@@ -124,13 +109,13 @@ class ModalComponent extends React.Component {
           <h4 className="centered-text">
             Order Details #{order.id}
           </h4>
-          <div class="container">
-            <div class="row">
-              <div class="col border rounded"><strong>Username:</strong> { order.user && order.user.username}</div>
-              <div class="col border rounded" ><strong>Email:</strong> { order.user && order.user.email}</div>
-              <div class="w-100"></div>
-              <div class="col border rounded"><strong>Product Type:</strong> {order.type}</div>
-              <div class="col border rounded"><strong>Quantity:</strong> {order.quantity}</div>
+          <div className="container">
+            <div className="row">
+              <div className="col border rounded"><strong>Username:</strong> { order.user && order.user.username}</div>
+              <div className="col border rounded" ><strong>Email:</strong> { order.user && order.user.email}</div>
+              <div className="w-100"></div>
+              <div className="col border rounded"><strong>Product Type:</strong> {order.type}</div>
+              <div className="col border rounded"><strong>Quantity:</strong> {order.quantity}</div>
             </div>
           </div>
           {
@@ -149,7 +134,7 @@ class ModalComponent extends React.Component {
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <h4 className="centered-text">Your Bid Price</h4>
-                <div class="col-xs-2">
+                <div className="col-xs-2">
                   <input 
                       type="number" 
                       name="price" 
@@ -188,8 +173,6 @@ class ModalComponent extends React.Component {
     );
   }
 }
-
-
 
 const mapStateToProps = (state) => {
   return {
