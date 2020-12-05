@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import store from './redux/store'
 import appolloClient from './graphql/graphql'
 import { ApolloProvider } from "@apollo/react-hooks";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(
