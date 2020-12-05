@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ebffc50e-a053-4086-ab13-a766bf534fae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0002_auto_20201124_0745.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0003_auto_20201124_1308.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0004_auto_20201124_1555.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0005_auto_20201128_0849.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0006_auto_20201128_0853.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0007_auto_20201130_1925.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0008_auto_20201201_1442.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/migrations/0009_auto_20201205_1542.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="ebffc50e-a053-4086-ab13-a766bf534fae" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +56,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="53" column="15" lean-forward="true" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
+            <state relative-caret-position="226">
+              <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -241,22 +230,6 @@
               <item name="bidding_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="bidding_app" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="bidding_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bidding_app" type="462c0819:PsiDirectoryNode" />
-              <item name="bidding_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bidding_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bidding_app" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bidding_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bidding_app" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -337,12 +310,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114926000" />
+    <option name="totallyTimeSpent" value="115525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26342005" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26342005" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Project Explorer" order="3" weight="0.32982844" />
@@ -360,7 +334,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.19870411" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997233" visible="true" weight="0.19870411" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5002767" side_tool="true" weight="0.17494601" />
       <window_info anchor="bottom" id="Python Console" order="14" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -688,8 +662,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="53" column="15" lean-forward="true" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
+        <state relative-caret-position="226">
+          <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
         </state>
       </provider>
     </entry>
