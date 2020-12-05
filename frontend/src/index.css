@@ -161,6 +161,10 @@ body, html, .App, #root, .auth-wrapper {
   text-decoration: none !important;
 }
 
+.sidebar strong:link{
+  text-decoration: none;
+}
+
 div.content {
   margin-left: 250px;
   /* padding: 1px 16px; */

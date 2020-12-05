@@ -35,8 +35,8 @@ class Order(TimeStampMixin):
      )
     user = models.ForeignKey(User, related_name='user_order', on_delete=models.CASCADE)
 
-    class Meta:
-        unique_together = ('type', 'user')
+    # class Meta:
+    #     unique_together = ('type', 'user')
 
     def __str__(self):
         return 'Bid: ' + self.id

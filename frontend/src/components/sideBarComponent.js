@@ -43,9 +43,9 @@ class SideBarComponent extends React.Component {
             </div>                        
           </div>
             <ul style={{ listStyleType: "none", padding: 0 }}>
-              <Link to="/" className={ordersClass}><li className={ordersClass}><strong>AVAILABLE ORDERS</strong></li></Link>
-              <Link to="/myorders" ><li className={myOrdersClass}><strong>MY ORDERS</strong></li></Link>
-              <Link to="/mybids"><li className={myBidsClass}><strong>MY BIDS</strong></li></Link>
+              <Link to="/" style={{ textDecoration:"none" }}><li className={ordersClass}><strong>AVAILABLE ORDERS</strong></li></Link>
+              <Link to="/myorders" style={{ textDecoration:"none" }} ><li className={myOrdersClass}><strong>MY ORDERS</strong></li></Link>
+              <Link to="/mybids" style={{ textDecoration:"none" }}><li className={myBidsClass}><strong>MY BIDS</strong></li></Link>
             </ul>
           </div>
           <div className="content">
