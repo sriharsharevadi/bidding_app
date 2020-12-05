@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchUser} from '../redux/actions/userActions'
 import { FormText } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 class LoginComponent extends React.Component {
@@ -27,13 +29,14 @@ class LoginComponent extends React.Component {
             <div className="auth-wrapper">
                 <div className="auth-inner">
                     <form onSubmit={this.onSubmit}>
-                        <h3>Sign In</h3>
+                        <h3>Log In</h3>
 
                         <div className="form-group">
                             <label>Username</label>
                             <input 
                                 type="text" 
                                 name="username" 
+                                required={true}
                                 placeholder="Username" 
                                 value={this.state.username}
                                 onChange={this.handleOnChange}
@@ -46,6 +49,7 @@ class LoginComponent extends React.Component {
                             <input 
                                 type="password" 
                                 name="password"
+                                required={true}
                                 placeholder="Password"
                                 value={this.state.password}
                                 onChange={this.handleOnChange}
@@ -62,10 +66,10 @@ class LoginComponent extends React.Component {
 
                         <div>
                             { this.props.errors && this.props.errors[0] &&
-                                <FormText>
-                                    {/* {this.props.errors} */}
-                                    {this.props.errors.map((error, i) => <p key={i}>{error}</p>)}
-                                </FormText>
+                                <div className="alert alert-danger m-0">
+                                    {this.props.errors.map((error, i) => <p className="m-0" key={i}>{error}</p>)}
+                                </div>
+                                    
                             }
                         </div>
 
@@ -73,10 +77,10 @@ class LoginComponent extends React.Component {
                             type="submit"
                             value="Login"
                             className="btn btn-primary btn-block">
-                                Submit
+                                Log In
                         </button>
                         <p className="forgot-password text-right">
-                            <a href="/register">Register</a>
+                            <Link to="/register"><button type="button" class="btn btn-secondary btn-sm">Register</button></Link>
                         </p>
                     </form>
                 </div>

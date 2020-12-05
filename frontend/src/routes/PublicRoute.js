@@ -5,12 +5,16 @@ import {connect} from 'react-redux'
 
 
 const PublicRoute = ({component: Component,userReducer, restricted, ...rest }) => {
+    // console.log(rest.location)
     return (
         // restricted = false meaning public route
         // restricted = true meaning restricted route
         <Route {...rest} render={props => (
             userReducer.loggedIn && restricted ?
-                <Redirect to="/" />
+            // console.log(props)
+            props.location.state ?
+                <Redirect to={props.location.state.from.pathname}/>
+                : <Redirect to= '/' />
             : <Component {...props} />
         )} />
     );

@@ -11,8 +11,15 @@ from django.contrib.auth.models import User
 #     def __str__(self):
 #         return self.name
 
+class TimeStampMixin(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-class Order(models.Model):
+    class Meta:
+        abstract = True
+
+
+class Order(TimeStampMixin):
     ORDER_CHOICES = [
         ('a', 'Product A'),
         ('b', 'Product B'),
@@ -30,7 +37,7 @@ class Order(models.Model):
     # bid = models.ManyToManyField(Bid, related_name='order_bid', on_delete = models.CASCADE)
 
 
-class Bid(models.Model):
+class Bid(TimeStampMixin):
     price = models.IntegerField(
         validators=[
             MaxValueValidator(10000000),
@@ -43,3 +50,10 @@ class Bid(models.Model):
 
     class Meta:
         unique_together = ('order', 'user')
+        ordering = ['-price']
+
+
+class Config(TimeStampMixin):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=200)
+    enabled = models.BooleanField(default=False)

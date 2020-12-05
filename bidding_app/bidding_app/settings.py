@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,6 +127,9 @@ ASGI_APPLICATION = "bidding_app.routing.application"
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/home/sriharsha/static'
+
+
 GRAPHENE = {
     "SCHEMA": "bidding_app.schema.schema",
     'MIDDLEWARE': [
@@ -148,3 +152,8 @@ CHANNEL_LAYERS = {
 CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
 
+GRAPHQL_JWT = {
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_EXPIRATION_DELTA': timedelta(days=1),
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+}

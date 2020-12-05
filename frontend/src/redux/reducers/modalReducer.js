@@ -4,7 +4,7 @@ const defaultState = {
   }
   
   const modalReducer = (state = defaultState, action) => {   
-      console.log(state, action) 
+    //   console.log(state, action) 
     switch (action.type) {
       case 'SHOW_MODAL':
         return {

@@ -4,6 +4,10 @@ import {connect} from 'react-redux'
 import LoginComponent from './components/LoginComponentt'
 import SignUpComponent from './components/SignUpComponent'
 import OrderComponent from './components/OrderComponent'
+import MyOrderComponent from './components/MyOrdersComponent'
+import MyBidsComponent from './components/MyBidsComponent'
+
+
 import {autoLogin} from './redux/actions/userActions'
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
@@ -16,15 +20,13 @@ import {
   useParams
 } from "react-router-dom"
 
-
 class App extends React.Component{
 
-  componentDidMount(){
+  componentDidMount(props){
     this.props.autoLogin()
   }
 
-  render(){
-    // console.log(this.props.userReducer.loggedIn)
+  render(props){
     return (
       // <div className="App">
       //       {
@@ -38,9 +40,11 @@ class App extends React.Component{
         <Router>
           <Switch>
             {/* <PublicRoute restricted={false} component={Home} path="/" exact /> */}
-            <PublicRoute restricted={true} component={LoginComponent} path="/login" exact />
+            <PublicRoute restricted={true} component={LoginComponent} {...props} path="/login" exact />
             <PublicRoute restricted={true} component={SignUpComponent} path="/register" exact />
             <PrivateRoute component={OrderComponent} path="/" exact />
+            <PrivateRoute component={MyOrderComponent} path="/myorders" exact />
+            <PrivateRoute component={MyBidsComponent} path="*" exact />
           </Switch>
         </Router>
 

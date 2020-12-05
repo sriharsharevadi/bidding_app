@@ -1,95 +1,60 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import BootstrapTable from "react-bootstrap-table-next";
-import BidModal from './bidModal'
+
+import {fetchBids} from '../redux/actions/bidActions';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 
-
-import {fetchOrders, refreshOrders} from '../redux/actions/orderActions'
-import {logUserOut} from '../redux/actions/userActions'
-import {showModal} from '../redux/actions/modalActions'
-import {AVAILABLE_ORDERS_QUERY} from '../graphql/queries'
-
 const { SearchBar } = Search;
 
-class OrderComponent extends React.Component {
-
-  onFollowChanged(row) {
-     this.props.showModal(row);
-
-  }
-
-  linkFollow = (cell, row, rowIndex, formatExtraData) => {
-    return (
-      <button type="button"
-        class="btn btn-info"
-        onClick={() => {
-          this.onFollowChanged(row);
-        }}
-      >
-        Place Bid
-      </button>
-    );
-  };
+class MyBidComponent extends React.Component {
 
   componentDidMount(){
-    const {fetchOrders, refreshOrders} = this.props;
-      fetchOrders(AVAILABLE_ORDERS_QUERY)
-      refreshOrders("orders", AVAILABLE_ORDERS_QUERY)
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault()
-    this.props.logUserOut()
-  }
-
-  onCreateOrder = (e) => {
-    e.preventDefault()
-    this.props.showModal({'__typename': 'CreateOrder'});
+    const {fetchBids} = this.props;
+    fetchBids()
   }
 
   render(){
     // console.log(this.props.modal.modalType != null)
-    const {orders, modal} = this.props
     // console.log(modal)
     return(
       <div className="content">
         <div className="px-xl-5">
           <>
             <ToolkitProvider
-              data={orders}
+              data={this.props.bids}
               keyField="id"
               columns={[
                 {
                   dataField: "id",
+                  text: "Bid ID",
+                  sort: true
+                },
+                {
+                  dataField: "order.id",
                   text: "Order ID",
                   sort: true
                 },
                 {
-                  dataField: "type",
+                  dataField: "order.type",
                   text: "Product",
                   sort: true
                 },
                 {
-                  dataField: "quantity",
+                  dataField: "order.quantity",
                   text: "Quantity"
                 },
                 {
-                  dataField: "user.username",
-                  text: "Customer Name",
+                  dataField: "price",
+                  text: "My Price",
                   sort: true
                 },
                 {
-                  dataField: "user.email",
-                  text: "Customer Email"
-                },
-                {
-                  dataField: "follow",
-                  text: "Place Bid",
-                  formatter: this.linkFollow,
+                  dataField: "accepted",
+                  text: "Bid Status",
                   sort: true
-                }
+                },
               ]}
               search
               >
@@ -101,7 +66,7 @@ class OrderComponent extends React.Component {
                   >
                     <div class="row">
                       <div class="col centered-text vertical-center">
-                        <p className="h3 centered-text">Available Orders</p>
+                        <p className="h3 centered-text">My Bids</p>
                       </div>
                       <div class="col-4">
                         <label className="centered-text">
@@ -113,7 +78,7 @@ class OrderComponent extends React.Component {
                           />
                         </label>
                       </div>                        
-                    </div>       
+                    </div>
                   </div>
                   <BootstrapTable
                     {...props.baseProps}
@@ -126,28 +91,22 @@ class OrderComponent extends React.Component {
             </ToolkitProvider>
           </>
         </div>
-      { (modal.modalType === "OrdType") &&
-       <BidModal />
-      }          
-      </div>   
+      </div>  
     )
   }
 }
 
 const mapStateToProps = (state) => {
     return {
-      orders: state.orderReducer.orders,
-      modal: state.modalReducer,
+      bids: state.bidReducer.bids,
     }
   }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchOrders: (query) => dispatch(fetchOrders(query)),
-        refreshOrders: (model, query) => dispatch(refreshOrders(model, query)),
-        logUserOut: () => dispatch(logUserOut()),
-        showModal: (row) => dispatch(showModal(row)),
+        fetchBids: () => dispatch(fetchBids()),
+        // refreshOrders: (model, query) => dispatch(refreshOrders(model,query)),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(MyBidComponent)

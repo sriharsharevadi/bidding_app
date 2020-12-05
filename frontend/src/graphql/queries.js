@@ -1,40 +1,87 @@
 import gql from 'graphql-tag'
 
-export const ALL_ORDERS = gql`
-query allOrders{
-  allOrders {
+export const AVAILABLE_ORDERS_QUERY = gql`
+query availableOrders {
+  availableOrders {
     id
     type
     quantity
+    user {
+      username
+      email
+    }
   }
 }
 `
 
-export const MY_ORDERS = gql`
-query myOrders{
+export const MY_ORDERS_QUERY = gql`
+query myOrders {
   me {
     userOrder {
       id
       type
       quantity
-      orderBid {
-        id
-        price
-        accepted
-      }
+      createdAt
     }
   }
 }
 `
-export const BIDS_FROM_ORDER = gql`
-query bidsFromOrder($orderID: Int!) {
-  bidsByOrder(orderId: $orderID) {
+export const MY_BIDS_QUERY = gql`
+query myBids {
+  myBids {
+    id
+    price
+    accepted
+    order {
+      id
+      type
+      quantity
+    }
+  }
+}
+`
+export const ORDER_DETAILS_QUERY = gql`
+query ($orderId: Int!, $req: Boolean) {
+  bidsByOrder(orderId: $orderId, req: $req) {
     id
     price
     accepted
     user {
       username
+      email
+    }
+  }
+  orderDetails(orderId: $orderId) {
+    id
+    type
+    quantity
+    user {
+      username
+      email
     }
   }
 }
 `
+
+// export const ORDER_DETAILS_QUERY = gql`
+// query ($orderId: Int!) {
+//   orderDetails(orderId: $orderId) {
+//     id
+//     type
+//     quantity
+//     user {
+//       username
+//       email
+//     }
+//     orderBid {
+//       id
+//       price
+//       accepted
+//       user {
+//         username
+//         email
+//       }
+//     }
+//   }
+// }
+// `

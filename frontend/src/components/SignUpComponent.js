@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {createUser, fetchUser} from '../redux/actions/userActions'
 import { FormText } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 class SignUpComponent extends React.Component {
     state = {
@@ -32,13 +34,14 @@ class SignUpComponent extends React.Component {
             <div className="auth-wrapper">
             <div className="auth-inner">
             <form onSubmit={this.onSubmit}>
-                <h3>Sign In</h3>
+                <h3>Register</h3>
 
                 <div className="form-group">
                     <label>Username</label>
                     <input 
                         type="text" 
                         name="username" 
+                        required={true}
                         placeholder="Username" 
                         value={this.state.username}
                         onChange={this.handleOnChange}
@@ -51,6 +54,7 @@ class SignUpComponent extends React.Component {
                     <input 
                         type="password" 
                         name="password" 
+                        required={true}
                         placeholder="Password" 
                         value={this.state.password}
                         onChange={this.handleOnChange}
@@ -63,6 +67,7 @@ class SignUpComponent extends React.Component {
                     <input 
                         type="email" 
                         name="email" 
+                        required={true}
                         placeholder="Email Address" 
                         value={this.state.email}
                         onChange={this.handleOnChange}
@@ -73,16 +78,17 @@ class SignUpComponent extends React.Component {
                 
                 <div>
                     { this.props.errors && this.props.errors[0] &&
-                        <FormText>
-                            {/* {this.props.errors} */}
-                            {this.props.errors.map((error, i) => <p key={i}>{error}</p>)}
-                        </FormText>
+                        <div className="alert alert-danger m-0">
+                            {this.props.errors.map((error, i) => <p className="m-0" key={i}>{error}</p>)}
+                        </div>      
                     }
                 </div>
 
                 <button type="submit" name="Login" className="btn btn-primary btn-block">Register</button>
+                    <p className="forgot-password text-right">
+                        <Link to="/login"><button type="button" class="btn btn-secondary btn-sm">Log in</button></Link>
+                    </p>
             </form>
-            <button type="button" className="btn btn-secondary mb-2" >Login</button>
             </div>
             
             </div>

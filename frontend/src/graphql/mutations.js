@@ -37,11 +37,21 @@ mutation createUser($username: String!, $password: String!, $email: String!) {
 }
 `
 export const CREATE_BID = gql`
-mutation createUser($orderId: String!, $price: Int!) {
+mutation createBid($orderId: String!, $price: Int!) {
   createBid(orderId: $orderId, price: $price) {
     bid {
       id
       price
+    }
+  }
+}
+`
+
+export const CREATE_ORDER = gql`
+mutation createOrder($type: String!, $quantity: Int!) {
+  createOrder(type: $type, quantity: $quantity) {
+    order {
+      id
     }
   }
 }

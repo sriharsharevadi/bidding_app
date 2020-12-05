@@ -11,6 +11,7 @@ from graphene_django.rest_framework.mutation import SerializerMutation
 from webapp.models import Order, Bid
 from django.contrib.auth import get_user_model
 from webapp.serializers import UserSerializer, OrderSerializer, BidSerializer
+from webapp.helpers import get_config_value
 
 
 class OrdType(DjangoObjectType):
@@ -33,9 +34,10 @@ class UserType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     debug = graphene.Field(DjangoDebug, name='_debug')
-    all_orders = graphene.List(OrdType)
-    bids_by_order = graphene.List(BidType, order_id=graphene.Int(required=True))
-    # users = graphene.List(UserType)
+    available_orders = graphene.List(OrdType)
+    my_bids = graphene.List(BidType)
+    bids_by_order = graphene.List(BidType, order_id=graphene.Int(required=True), req=graphene.Boolean(required=False))
+    order_details = graphene.Field(OrdType, order_id=graphene.Int(required=True))
     me = graphene.Field(UserType)
 
     # def resolve_users(self, info):
@@ -44,23 +46,27 @@ class Query(graphene.ObjectType):
     def resolve_me(self, info):
         print(info.context)
         user = info.context.user
-
         if user.is_anonymous:
             raise Exception('Not logged in!')
 
         return user
 
-    def resolve_all_orders(root, info):
-        # print(info.context.user)
-        # We can easily optimize query count in the resolve method
-        print(info.context)
-        # Order.objects.filter()
-        return Order.objects.all().exclude(user__username=info.context.user).exclude( order_bid__user__username=info.context.user)
+    def resolve_my_bids(root,  info):
+        return Bid.objects.filter(user__username=info.context.user).select_related('order')
 
-    def resolve_bids_by_order(root, info, order_id):
+    def resolve_available_orders(root, info):
+        return Order.objects.all().select_related('user').exclude(user__username=info.context.user).exclude( order_bid__user__username=info.context.user)
+
+    def resolve_bids_by_order(root, info, order_id, req):
+        if get_config_value("show_bids") or req:
+            return Bid.objects.filter(order_id=order_id).select_related('user')
+        else:
+            return None
+
+    def resolve_order_details(root, info, order_id):
         try:
-            return Bid.objects.filter(order_id=order_id)
-        except Bid.DoesNotExist:
+            return Order.objects.get(pk=order_id)
+        except Order.DoesNotExist:
             return None
 #
 # class CreateOrder(graphene.Mutation):
@@ -91,27 +97,61 @@ class UserMutation(SerializerMutation):
         lookup_field = 'id'
 
 
-class OrderMutation(SerializerMutation):
-    class Meta:
-        serializer_class = OrderSerializer
-        model_operations = ['create', 'update']
-        lookup_field = 'id'
-        convert_choices_to_enum = False
+# class OrderMutation(SerializerMutation):
+#     class Meta:
+#         serializer_class = OrderSerializer
+#         model_operations = ['create', 'update']
+#         lookup_field = 'id'
+#         convert_choices_to_enum = False
+#
+#     @classmethod
+#     def perform_mutate(cls, serializer, info):
+#         obj = serializer.save()
+#         OnNewOrder.new_order("order")
+#
+#         kwargs = {}
+#         for f, field in serializer.fields.items():
+#             if not field.write_only:
+#                 if isinstance(field, serializers.SerializerMethodField):
+#                     kwargs[f] = field.to_representation(obj)
+#                 else:
+#                     kwargs[f] = field.get_attribute(obj)
+#
+#         return cls(errors=None, **kwargs)
 
-    @classmethod
-    def perform_mutate(cls, serializer, info):
-        obj = serializer.save()
+
+class OrderMutation(graphene.Mutation):
+    order = graphene.Field(OrdType)
+
+    class Arguments:
+        id = graphene.Int(required=False)
+        type = graphene.String(required=True)
+        quantity = graphene.Int(required=True)
+
+    def mutate(self, info, **kwargs):
+        # print(kwargs)
+        id = kwargs.get('id', None)
+        type = kwargs.get('type', None)
+        quantity = kwargs.get('quantity', None)
+
+        if id:
+            order = Order.objects.get(pk=id)
+            if type:
+                order.type = type
+            if quantity:
+                order.quantity = quantity
+            order.save()
+        else:
+            user = info.context.user
+            order = Order(
+                type=type,
+                quantity=quantity,
+                user=user,
+            )
+            order.save()
         OnNewOrder.new_order("order")
-
-        kwargs = {}
-        for f, field in serializer.fields.items():
-            if not field.write_only:
-                if isinstance(field, serializers.SerializerMethodField):
-                    kwargs[f] = field.to_representation(obj)
-                else:
-                    kwargs[f] = field.get_attribute(obj)
-
-        return cls(errors=None, **kwargs)
+        # OnNewOrder.new_order(quantity=quantity, type=type, user=user)
+        return OrderMutation(order=order)
 
 
 class CreateBid(graphene.Mutation):
@@ -142,43 +182,43 @@ class CreateBid(graphene.Mutation):
             )
             bid.save()
 
-        # OnNewOrder.new_order(quantity=quantity, type=type, user=user)
+        OnNewOrder.new_order("bid")
         return CreateBid(bid=bid)
 
 
-class BidMutation(SerializerMutation):
-    class Meta:
-        serializer_class = BidSerializer
-        model_operations = ['create', 'update']
-        lookup_field = 'id'
-
-    @classmethod
-    def mutate_and_get_payload(cls, root, info, **input):
-        kwargs = cls.get_serializer_kwargs(root, info, **input)
-        serializer = cls._meta.serializer_class(**kwargs)
-
-        if serializer.is_valid():
-            return cls.perform_mutate(serializer, info)
-        else:
-            errors = ErrorType.from_errors(serializer.errors)
-
-            return cls(errors=errors)
-
-    @classmethod
-    def perform_mutate(cls, serializer, info):
-        print("hii", serializer.data)
-        obj = serializer.save()
-        OnNewOrder.new_order()
-
-        kwargs = {}
-        for f, field in serializer.fields.items():
-            if not field.write_only:
-                if isinstance(field, serializers.SerializerMethodField):
-                    kwargs[f] = field.to_representation(obj)
-                else:
-                    kwargs[f] = field.get_attribute(obj)
-
-        return cls(errors=None, **kwargs)
+# class BidMutation(SerializerMutation):
+#     class Meta:
+#         serializer_class = BidSerializer
+#         model_operations = ['create', 'update']
+#         lookup_field = 'id'
+#
+#     @classmethod
+#     def mutate_and_get_payload(cls, root, info, **input):
+#         kwargs = cls.get_serializer_kwargs(root, info, **input)
+#         serializer = cls._meta.serializer_class(**kwargs)
+#
+#         if serializer.is_valid():
+#             return cls.perform_mutate(serializer, info)
+#         else:
+#             errors = ErrorType.from_errors(serializer.errors)
+#
+#             return cls(errors=errors)
+#
+#     @classmethod
+#     def perform_mutate(cls, serializer, info):
+#         print("hii", serializer.data)
+#         obj = serializer.save()
+#         OnNewOrder.new_order()
+#
+#         kwargs = {}
+#         for f, field in serializer.fields.items():
+#             if not field.write_only:
+#                 if isinstance(field, serializers.SerializerMethodField):
+#                     kwargs[f] = field.to_representation(obj)
+#                 else:
+#                     kwargs[f] = field.get_attribute(obj)
+#
+#         return cls(errors=None, **kwargs)
 
     # @classmethod
     # def get_serializer_kwargs(cls, root, info, **input):

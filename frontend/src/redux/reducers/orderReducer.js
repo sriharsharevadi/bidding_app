@@ -1,18 +1,39 @@
 // src/js/reducers/index.js
 
-import { ADD_ORDER } from "../actionTypes";
+import { ADD_ORDER, ORDER_DETAILS, ALL_ORDERS, MY_ORDERS } from "../actionTypes";
 
 const defaultState = {
-  orders: []
+  orders: [],
+  myOrders:[],
+  orderDetails: {},
+  order_create: {}
 };
 
 const orderReducer = (state = defaultState, action) => {
+  // console.log(action.type, action.payload)
     switch(action.type){
+        case ALL_ORDERS:
+          // console.log("action", action)
+          return Object.assign({}, state, {
+              orders: [...action.payload]
+            });
+        case MY_ORDERS:
+          // console.log("action", action)
+          return Object.assign({}, state, {
+              myOrders: [...action.payload]
+            });
+        case ORDER_DETAILS:
+          return Object.assign({}, state, {
+            orderDetails: action.payload
+          });
         case ADD_ORDER:
-            // console.log("action", action)
-            return Object.assign({}, state, {
-                orders: [...action.payload]
-              });
+          return Object.assign({}, state, {
+            order_create: action.payload
+          });
+        case "HIDE_MODAL":
+          return Object.assign({}, state, {
+            order_create: {}
+          });
         default: return state
     }
 }
