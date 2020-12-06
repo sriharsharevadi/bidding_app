@@ -55,7 +55,7 @@ class Bid(TimeStampMixin):
 
     class Meta:
         unique_together = ('order', 'user')
-        ordering = ['-price']
+        ordering = ['price']
 
     def __str__(self):
         return 'Bid: ' + self.id
