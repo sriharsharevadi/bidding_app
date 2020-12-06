@@ -4,12 +4,12 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:8000/graph", // use https for secure endpoint
+  uri: "http://localhost/api/graph", // use https for secure endpoint
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:8000/graphql/", // use wss for a secure endpoint
+  uri: "ws://localhost/api/graphql/", // use wss for a secure endpoint
   options: {
     // lazy: true,
     reconnect: true,

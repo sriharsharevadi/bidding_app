@@ -22,6 +22,6 @@ class MyGraphqlWsConsumer(channels_graphql_ws.GraphqlWsConsumer):
 
 application = channels.routing.ProtocolTypeRouter({
     'websocket': channels.routing.URLRouter([
-        django.urls.path('graphql/', MyGraphqlWsConsumer),
+        django.urls.path('api/graphql/', MyGraphqlWsConsumer),
     ])
 })

@@ -26,7 +26,7 @@ SECRET_KEY = '()_xf@c7+q4$e&9^o9kau-!tyexvv$+e_@o_@2x2d9$$@#_os+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -127,7 +127,7 @@ ASGI_APPLICATION = "bidding_app.routing.application"
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/sriharsha/static'
+STATIC_ROOT = '/opt/app/frontend/build/static'
 
 
 GRAPHENE = {
