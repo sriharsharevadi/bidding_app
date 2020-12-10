@@ -45,7 +45,7 @@
         // Setup subscription client.
         const GRAPHQL_ENDPOINT =
             (location.protocol === 'https' ? 'wss' : 'ws')
-            + '://' + location.host + '/graphql/';
+            + '://' + location.host + '/api/graphql/';
         let subClient = new window.SubscriptionsTransportWs.SubscriptionClient(
             GRAPHQL_ENDPOINT,
             { reconnect: true }

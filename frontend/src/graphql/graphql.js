@@ -3,24 +3,18 @@ import { split, HttpLink, ApolloLink, concat } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
+const ip = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : "localhost:8000"
+
 const httpLink = new HttpLink({
-  uri: "http://localhost/api/graph", // use https for secure endpoint
+  uri: "http://" + ip + "/api/graph", // use https for secure endpoint
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost/api/graphql/", // use wss for a secure endpoint
+  uri: "ws://" + ip + "/api/graphql/", // use wss for a secure endpoint
   options: {
     // lazy: true,
     reconnect: true,
-    // connectionParams: async () => {
-      // const token = await getToken();
-      // return {
-        // headers: {
-          // Authorization: token ? `Bearer ${token}` : "",
-        // },
-      // }
-    // },
   },
 });
 
