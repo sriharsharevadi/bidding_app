@@ -28,7 +28,7 @@ class LoginComponent extends React.Component {
 			<div className="auth-wrapper">
 				<div className="auth-inner">
 					<form onSubmit={this.onSubmit}>
-						<h3>Sign in In</h3>
+						<h3>Sign In</h3>
 						<div className="form-group">
 							<label>Username</label>
 							<input 
