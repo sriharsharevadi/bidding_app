@@ -9,3 +9,4 @@ ADD frontend/package.json /opt/app/frontend/
 ADD frontend/package-lock.json /opt/app/frontend/
 WORKDIR /opt/app/frontend
 RUN npm install
+
