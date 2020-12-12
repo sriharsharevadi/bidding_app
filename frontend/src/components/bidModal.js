@@ -126,6 +126,11 @@ class ModalComponent extends React.Component {
                   keyField="id"
                   data={bid.bids}
                   columns={this.state.columns}
+                  bootstrap4={true}
+                  pagination={ pagination }
+                  bordered={false}
+                  striped
+                  wrapperClasses="table-responsive"
                 />
             </div>
           }            
