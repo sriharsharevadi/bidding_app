@@ -221,4 +221,8 @@ td{
   text-align: right;
 }
 
+.table td, .table th {
+  vertical-align: middle !important;
+  /* padding: .5rem !important; */
+}
 
