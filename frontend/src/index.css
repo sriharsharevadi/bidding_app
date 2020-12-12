@@ -226,3 +226,8 @@ td{
   /* padding: .5rem !important; */
 }
 
+.row{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
