@@ -221,4 +221,13 @@ td{
   text-align: right;
 }
 
+.table td, .table th {
+  vertical-align: middle !important;
+  /* padding: .5rem !important; */
+}
+
+.row{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
 

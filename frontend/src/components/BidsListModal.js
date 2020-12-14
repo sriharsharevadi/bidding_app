@@ -152,6 +152,8 @@ class BidsListModalComponent extends React.Component {
                     bootstrap4={true}
                     pagination={ pagination }
                     bordered={false}
+                    striped
+                    wrapperClasses="table-responsive"
                   />
                 </div>
               )}

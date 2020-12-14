@@ -132,6 +132,8 @@ class MyOrderComponent extends React.Component {
                     bootstrap4={true}
                     pagination={ paginationFactory() }
                     bordered={false}
+                    striped
+                    wrapperClasses="table-responsive"
                   />
                 </div>
               )}
