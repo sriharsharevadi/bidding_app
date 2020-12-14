@@ -6,12 +6,12 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 const ip = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : "localhost:8000"
 
 const httpLink = new HttpLink({
-  uri: "https://" + ip + "/api/graph", // use https for secure endpoint
+  uri: "http://" + ip + "/api/graph", // use https for secure endpoint
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "wss://" + ip + "/api/graphql/", // use wss for a secure endpoint
+  uri: "ws://" + ip + "/api/graphql/", // use wss for a secure endpoint
   options: {
     // lazy: true,
     reconnect: true,
