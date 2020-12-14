@@ -3,15 +3,15 @@ import { split, HttpLink, ApolloLink, concat } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
-const ip = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : "localhost:8000"
+const ip = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : "bidding-app-ddj3zelmiq-el.a.run.app"
 
 const httpLink = new HttpLink({
-  uri: "http://" + ip + "/api/graph", // use https for secure endpoint
+  uri: "https://" + ip + "/api/graph", // use https for secure endpoint
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "ws://" + ip + "/api/graphql/", // use wss for a secure endpoint
+  uri: "wss://" + ip + "/api/graphql/", // use wss for a secure endpoint
   options: {
     // lazy: true,
     reconnect: true,
