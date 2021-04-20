@@ -92,11 +92,11 @@ DATABASES = {
 
         'NAME': 'bidding_app',
 
-        'USER': 'postgres',
+        'USER': 'sriharsha',
 
         'PASSWORD': '6xp3chvsu40L0N6b',
 
-        'HOST': '35.240.138.17',
+        'HOST': '10.148.0.3',
 
         'PORT': '5432',
 
